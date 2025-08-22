@@ -1,0 +1,39 @@
+; VAR
+(defvar interfaceId "wlo1")
+
+(defvar BAT_NAME "BAT0")
+
+(defvar ASSET_PATH "/home/vin/.config/eww/assets")
+
+(defvar HOME "/home/vin")
+
+(defvar toggle_sound false)
+
+; BRIGHTNESS
+(deflisten brightness :initial "" `scripts/brightness.sh`)
+
+; VOLUME
+(deflisten volume :initial "" `scripts/vol.sh`)
+
+; MIC
+(deflisten mic :initial "" `scripts/mic.sh`)
+
+; CAMERA
+(defpoll camera :interval "0.5s"
+  `[[ -e /sys/bus/usb/drivers/usb/1-3 ]] && echo "On" || echo "Off"`)
+
+(defpoll wifi_name :interval "10s" 
+  "nmcli -t -f NAME,DEVICE connection show --active | grep 'wlo1$' | awk -F: '{print $1}' ")
+; WORKSPACES
+(deflisten workspace_state :initial "" "~/.config/eww/scripts/workspaces.sh")
+
+; WINDOW TITLE
+(deflisten window_title :initial "" "~/.config/eww/scripts/window_title.sh")
+
+; WINDOW TITLE
+(deflisten player :initial "" "~/.config/eww/scripts/playerctl.sh")
+
+; BATTERY ESTIMATE
+(defpoll battery_estimate :interval "60s"
+  "~/.config/eww/scripts/battery_estimate.sh")
+

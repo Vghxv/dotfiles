@@ -1,0 +1,85 @@
+(include "audio/audio_ctl.yuck")
+
+(defwindow sound
+  :monitor "[1,0]"
+  :geometry 
+  (
+   geometry 
+   :x "10px" 
+   :y "10px"
+   :width "5%"
+   ; :height "30%"
+   :anchor "top left"
+   )
+  :stacking "fg"
+  :focusable "none"
+  (box :orientation "h"
+    (
+     audio-control 
+     :device-type "SINK" 
+     :icon "🔊" 
+     :current-value volume 
+     :class "element"
+     )
+    (
+     audio-control 
+     :device-type "SOURCE" 
+     :icon "🎙️"
+     :current-value mic 
+     :class "element"
+     )
+    )
+  )
+
+; (
+;  defwindow audio_menu
+;  :monitor 0
+;  :exclusive "false"
+;  :stacking "overlay"
+;  :geometry
+;  (geometry :anchor "center")
+;  (audio_menu)
+;  )
+;
+; (
+;  defwidget audio_menu []
+;  (
+;   box :class "parent" :space-evenly "false" :orientation "v"
+;   (
+;    box :class "header" :space-evenly "false"
+;    (label :text "    Switch Audio Devices" :class "title")
+;    (
+;     button 
+;     :class "exit" 
+;     :onclick "eww open audio_menu --toggle"
+;     (label :text " ")
+;     )
+;    )
+;   (
+;    box :class "body" :space-evenly "false" :orientation "v"
+;    (
+  ;     button 
+  ;     :class "button"
+  ;     :vexpand "false"
+  ;     :onclick "scripts/set_audio_device.sh alsa_output.pci-0000_01_00.1.hdmi-stereo"
+  ;     (label :text "󰓃   Speakers")
+  ;     )
+  ;    (
+  ;     button 
+  ;     :class "button"
+  ;     :hexpand "false"
+  ;     :onclick "scripts/set_audio_device.sh alsa_output.pci-0000_00_1b.0.analog-surround-40"
+  ;     (label :text "󰋋   Headphones")
+  ;     )
+  ;    (
+  ;     button 
+  ;     :class "button" 
+  ;     :hexpand "false"
+  ;     :onclick "scripts/set_audio_device.sh alsa_output.usb-Sony_Interactive_Entertainment_DualSense_Wireless_Controller-00.analog-surround-40"
+  ;     (label :text "    PS5 Controller")
+  ;     )
+  ;    )
+  ;   )
+  ;  )
+  ;
+  ;

@@ -1,0 +1,30 @@
+; IMAGE HELPER
+(defwidget bimage [filename]
+  (image :path "${ASSET_PATH}/${filename}" :halign "begin" :image-width "20" :image-height "20")
+  )
+
+(defwidget tbutton [var value_on text_on text_off color_on color_off cmd]
+  (button
+    :class {var == value_on ? color_on : color_off}
+    :onclick "${HOME}/${cmd}"
+    "${var == value_on ? text_on : text_off}"
+    )
+  )
+
+(defwidget inp [class filename text ?tooltip]
+  (box
+    :space-evenly false
+    :class class
+    (box
+      :width 40
+      (bimage 
+        :filename filename)
+      )
+    (box
+      (label :text text
+             :tooltip tooltip)
+      )
+    )
+  )
+
+

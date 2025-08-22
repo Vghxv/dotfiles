@@ -1,0 +1,28 @@
+left box
+
+time date workspaces
+
+middle box
+
+window_title
+
+right box
+
+w_sound w_brightness w_battery w_camera w_system_tray power_button
+
+
+w_sound : click to open pavucontrol
+content is default sink volume. when muted, content is 🔇
+
+
+w_brightness : no hover action, no click action
+content is brightness percentage with icon
+
+w_battery : when
+clickable button : lighten on hover
+content is battery percentage with icon
+
+
+
+
+

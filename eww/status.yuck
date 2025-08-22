@@ -1,0 +1,17 @@
+; RAM
+(defwidget w_ram []
+  (box
+    ; (bimage :filename "ram.png")
+    (label :text "${round(EWW_RAM.used_mem_perc, 1)}%")
+    )
+  )
+
+; DISK
+(defwidget w_disk[]
+  (box
+    ; (bimage :filename "disk.png")
+    (label :text "${round(EWW_DISK["/"].used_perc, 1)}%")
+    )
+  )
+
+

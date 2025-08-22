@@ -1,0 +1,85 @@
+.bar {
+  margin : 5px;
+  background-color: rgba(0,0,0,0);
+}
+
+// .window_title{
+  // color: white;
+// }
+// .normal_lb{
+//   color: black;
+// }
+
+
+$inactive-color: #A0A0A0;
+.btn-ws {
+  border-radius: 0px;
+
+  .active {
+    @extend %element-base;
+    background-color: lighten($inactive-color, 30%); 
+
+    &:hover {
+      background-color: lighten($inactive-color, 40%); 
+    }
+  }
+  .inactive {
+    @extend %element-base;
+    background-color: $inactive-color;
+    &:hover {
+      background-color: lighten($inactive-color, 10%); 
+    }
+  }
+
+}
+
+
+
+// margin: 2px;
+// padding: 0px 30px 0px 0px;
+
+// Define a placeholder with all shared styles
+%element-base {
+  border-radius: 5px;
+}
+
+// Apply it to .element
+.element {
+  @extend %element-base;
+  background-color: $inactive-color;
+  // &:hover {
+  //   background-color: lighten($ws-button-bg-inactive-color, 20%); 
+  // }
+}
+
+// Use the same base and override background
+// .brt-low {
+//   @extend %element-base;
+//   background-color: #FF6666;
+//   color: #ffffff;
+// }
+
+.bat-low {
+  @extend %element-base;
+  background-color: #FF6666;
+  color: #ffffff;
+}
+
+.bat-mid {
+  @extend %element-base;
+  background-color: #FFCC66;
+  color: #000000;
+}
+.bat-charging {
+  @extend %element-base;
+  background-color: #66FF66;
+  color: #000000;
+}
+
+.brt-high {
+  @extend %element-base;
+  background-color: #FFCC66;
+  color: #000000;
+}
+
+

@@ -1,0 +1,241 @@
+
+; (defwidget metric [icon value ?onchange ?onclick ?class ?height ?width]
+;   (eventbox :onhover "${EWW_EXECUTABLE} update toggle=true"
+;             :onhoverlost "${EWW_EXECUTABLE} update toggle=false"
+;     (box :orientation "h"
+;          :class "metric"
+;          :space-evenly true
+;       (box :orientation "h" :space-evenly true
+;         (revealer
+;           :reveal {toggle}
+;           :transition "slideright"
+;           :duration "500ms"
+;           (scale :class "sound_scale"
+;                  :min 0
+;                  :max 101
+;                  :active {onchange != ""}
+;                  :value value
+;                  :onchange onchange
+;                  :draw-value true
+;                  :value-pos "left"
+;             )
+;           )
+;         )
+;       )
+;     )
+;   )
+;
+; (defwidget revealer-on-hover [var varname ?class ?duration ?transition]
+;   (box 
+;     :class "${class} revealer-on-hover"
+;     :orientation "v"
+;     ; :space-evenly false
+;     :hexpand true
+;     (eventbox 
+;       :class "eventbox"
+;       :onhover "${EWW_EXECUTABLE} update ${varname}=true"
+;       :onhoverlost "${EWW_EXECUTABLE} update ${varname}=false"
+;       (box 
+;         :space-evenly false
+;         :orientation "v"
+;         (children :nth 0)
+;         (children :nth 1)
+;         ; (revealer 
+;         ;   :reveal var
+;         ;   :duration {duration ?: "500ms"}
+;         ;   :transition {transition ?: "slideright"}
+;         ;   (children :nth 1)
+;         ;   )
+;
+;         )
+;       )
+;     )
+;   )
+
+(include "var.yuck")
+(include "utils.yuck")
+(include "audio/eww.yuck")
+
+; (tooltip :class class
+;   (label :text "${battery_estimate}")
+;   (label :text "BAT ${EWW_BATTERY[BAT_NAME]["capacity"]}%")
+;   )
+
+
+(defwidget w_window_title [class]
+  (label 
+    :class class 
+    :text "${window_title}")
+  )
+
+; https://docs.rs/chrono/latest/chrono/format/strftime/index.html
+(defwidget w_time [class format]
+  (button 
+    :class class "${formattime(EWW_TIME, format)}")
+  )
+
+(defwidget w_systray [class]
+  (systray 
+    :class class 
+    :icon-size 20)
+  )
+
+(defwidget w_camera []
+  (tbutton 
+    :var camera 
+    :value_on "On"
+    :text_on "📸"
+    :text_off "📷" 
+    :color_on "brt-high" 
+    :color_off "element" 
+    :cmd ".scripts/toggle-webcam.sh"
+    )
+  )
+
+
+(defwidget w_battery []
+  (inp
+    :class {EWW_BATTERY[BAT_NAME]["status"] != "Discharging" ? "bat-charging" :
+     EWW_BATTERY[BAT_NAME]["capacity"] < 25 ? "bat-low" :
+     EWW_BATTERY[BAT_NAME]["capacity"] < 50 ? "bat-mid" : "element" }
+    :filename "battery.png"
+    :text "${EWW_BATTERY[BAT_NAME]["capacity"]}%"
+    :tooltip "${battery_estimate}"
+  )
+)
+
+(defwidget w_brightness [class]
+  (inp
+    :class class
+    :filename "brightness.png"
+    :text "${brightness}%"
+  )
+)
+
+(defwidget w_wifi [class]
+  (inp
+    :class class
+    :filename "wifi.png"
+    :text "${wifi_name != '' ? wifi_name : 'Disconnected'}"
+  )
+)
+
+(defwidget w_volctl [class]
+  (button 
+    :class class 
+    :onclick "sh -c 'pavucontrol &'"
+    (bimage 
+      :filename "sound-wave.png")
+    )
+  )
+
+; (defwidget w_mic [class]
+;   (audio-control 
+;     :device-type "SOURCE"
+;     :icon "mic"
+;     :current-value mic
+;     :class class))
+
+(defwidget w_sound [class]
+    (box
+      :class class
+      (scale
+        :min 0
+        :max 101
+        :onchange "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ {}%"
+        :value {volume == "Muted" || volume == "" ? 0 : volume}
+        ; :draw-value true
+        ; :value-pos "left"
+        )
+      )
+  )
+
+
+(defwidget cBoxStart []
+  (box :space-evenly false
+       :spacing 10
+    (box
+      :width 80
+      (w_time :class "element" :format "%R")
+      )
+    (box
+      :width 80
+      (w_time :class "element" :format "%v")
+      )
+    (box 
+      :class "btn-ws"
+      :spacing 10
+      (for ws in "${workspace_state?.workspaces}"
+        (button 
+          :onclick "hyprctl dispatch workspace ${ws}"
+          :class {ws == workspace_state.active ? "active" : "inactive"}
+          "${ws}"
+          )
+        )
+      )
+    )
+  )
+
+(defwidget cBoxMiddle []
+  (box  
+    ; :halign "center"
+    ; (w_window_title :class "element")
+    )
+  )
+
+(defwidget cBoxEnd []
+  (box 
+    :spacing 10 
+    :space-evenly false 
+    :halign "end"
+    (box
+      :width 80
+      (w_wifi :class "element")
+    )
+    (box
+      :width 100
+      (w_sound :class "element")
+      )
+    (box
+      :width 40
+      (w_volctl :class "element")
+      )
+    (box
+      :width 80
+      (w_brightness :class "element")
+      )
+    (box
+      :width 40
+      (w_camera) 
+      )
+    (box
+      :width 80
+      (w_battery)
+      )
+    (box
+      :width 100
+      (w_systray :class "element")
+      )
+    )
+  )
+
+(defwindow bar
+  :monitor "[1,0]"
+  :geometry
+  (geometry
+    :x "0px"
+    :y "0px"
+    :width "100%"
+    :height "3%"
+    ; :anchor "bottom center"
+    :anchor "top center"
+    )
+  :stacking "fg"
+  :exclusive true
+  :focusable "none"
+  (centerbox
+    (cBoxStart)
+    (cBoxMiddle)
+    (cBoxEnd)
+    )
+  )

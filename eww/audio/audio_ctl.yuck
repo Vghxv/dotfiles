@@ -1,0 +1,36 @@
+(defwidget audio-control [device-type icon current-value class]
+  (box 
+    :orientation "v"
+    :class class
+    :space-evenly false
+    (box
+      :height 20
+      (button 
+        :class class
+        :onclick "wpctl set-mute @DEFAULT_AUDIO_${device-type}@ toggle"
+        "${current-value == "Muted" ? "🔇" : icon}")
+      )
+    (box
+      :height 200
+      (scale
+        :min 0
+        :max 101
+        :marks "true"
+        :orientation "v"
+        :flipped true
+        :draw-value true
+        :onchange "wpctl set-volume @DEFAULT_AUDIO_${device-type}@ {}%"
+        :value {current-value == "Muted" || current-value == "" ? 0 : current-value}
+        )
+      )
+    (box
+      :height 100
+      (progress
+        :value {current-value == "Muted" || current-value == "" ? 0 : current-value}
+        :orientation "v"
+        :flipped true
+        )
+      )
+    )
+  )
+
