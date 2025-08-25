@@ -88,7 +88,7 @@
     :text_off "📷" 
     :color_on "brt-high" 
     :color_off "element" 
-    :cmd ".scripts/toggle-webcam.sh"
+    :cmd ".config/scripts/toggle-webcam.sh"
     )
   )
 
