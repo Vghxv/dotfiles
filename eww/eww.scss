@@ -51,13 +51,17 @@ $inactive-color: #A0A0A0;
   //   background-color: lighten($ws-button-bg-inactive-color, 20%); 
   // }
 }
+.sound-low {
+  @extend %element-base;
+  background-color: #CD7F32;
+  color: #ffffff;
+}
 
-// Use the same base and override background
-// .brt-low {
-//   @extend %element-base;
-//   background-color: #FF6666;
-//   color: #ffffff;
-// }
+.brt-low {
+  @extend %element-base;
+  background-color: #CD7F32;
+  color: #000000;
+}
 
 .bat-low {
   @extend %element-base;
@@ -82,4 +86,14 @@ $inactive-color: #A0A0A0;
   color: #000000;
 }
 
+.wifi-connected {
+  @extend %element-base;
+  background-color: #CD7F32;
+  color: #000000;
+}
 
+.wifi-disconnected {
+  @extend %element-base;
+  background-color: #FF6666;
+  color: #ffffff;
+}

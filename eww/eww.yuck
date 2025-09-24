@@ -106,7 +106,7 @@
 
 (defwidget w_brightness [class]
   (inp
-    :class class
+    :class {brightness < 25 ? "brt-low" : "element"}
     :filename "brightness.png"
     :text "${brightness}%"
   )
@@ -114,7 +114,7 @@
 
 (defwidget w_wifi [class]
   (inp
-    :class class
+    :class {wifi_name != '' ? "wifi-connected" : "wifi-disconnected"}
     :filename "wifi.png"
     :text "${wifi_name != '' ? wifi_name : 'Disconnected'}"
   )
@@ -138,7 +138,7 @@
 
 (defwidget w_sound [class]
     (box
-      :class class
+      :class {volume < 25 ? "sound-low" : "element"}
       (scale
         :min 0
         :max 101
