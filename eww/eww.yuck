@@ -74,10 +74,13 @@
     :class class "${formattime(EWW_TIME, format)}")
   )
 
-(defwidget w_systray [class]
+(defwidget w_systray []
   (systray 
-    :class class 
-    :icon-size 20)
+    ; :class class
+    :icon-size 20
+    :spacing 10
+    ; :prepend-new true
+    )
   )
 
 (defwidget w_camera []
@@ -94,7 +97,7 @@
 
 
 (defwidget w_battery []
-  (inp
+ (inp
     :class {EWW_BATTERY[BAT_NAME]["status"] != "Discharging" ? "bat-charging" :
      EWW_BATTERY[BAT_NAME]["capacity"] < 25 ? "bat-low" :
      EWW_BATTERY[BAT_NAME]["capacity"] < 50 ? "bat-mid" : "element" }
@@ -106,7 +109,7 @@
 
 (defwidget w_brightness [class]
   (inp
-    :class {brightness < 25 ? "brt-low" : "element"}
+    :class class
     :filename "brightness.png"
     :text "${brightness}%"
   )
@@ -138,7 +141,7 @@
 
 (defwidget w_sound [class]
     (box
-      :class {volume < 25 ? "sound-low" : "element"}
+      :class class
       (scale
         :min 0
         :max 101
@@ -154,6 +157,11 @@
 (defwidget cBoxStart []
   (box :space-evenly false
        :spacing 10
+    (box 
+      :width 40
+      :class "element"
+      (bimage :filename "apple.png")
+      )
     (box
       :width 80
       (w_time :class "element" :format "%R")
@@ -213,8 +221,8 @@
       (w_battery)
       )
     (box
-      :width 100
-      (w_systray :class "element")
+      :class "systray"
+      (w_systray)
       )
     )
   )

@@ -11,16 +11,16 @@
 // }
 
 
-$inactive-color: #A0A0A0;
+$inactive-color: #bdb38a;
 .btn-ws {
   border-radius: 0px;
 
   .active {
     @extend %element-base;
-    background-color: lighten($inactive-color, 30%); 
+    background-color: lighten($inactive-color, 15%); 
 
     &:hover {
-      background-color: lighten($inactive-color, 40%); 
+      background-color: lighten($inactive-color, 20%);
     }
   }
   .inactive {
@@ -47,6 +47,16 @@ $inactive-color: #A0A0A0;
 .element {
   @extend %element-base;
   background-color: $inactive-color;
+  // &:hover {
+  //   background-color: lighten($ws-button-bg-inactive-color, 20%); 
+  // }
+}
+
+.systray {
+  @extend %element-base;
+  background-color: $inactive-color;
+  padding: 5px;
+  
   // &:hover {
   //   background-color: lighten($ws-button-bg-inactive-color, 20%); 
   // }
@@ -88,7 +98,7 @@ $inactive-color: #A0A0A0;
 
 .wifi-connected {
   @extend %element-base;
-  background-color: #CD7F32;
+  background-color: #66FF66;
   color: #000000;
 }
 
