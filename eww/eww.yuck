@@ -115,7 +115,7 @@
   )
 )
 
-(defwidget w_wifi [class]
+(defwidget w_wifi []
   (inp
     :class {wifi_name != '' ? "wifi-connected" : "wifi-disconnected"}
     :filename "wifi.png"
@@ -198,11 +198,11 @@
     :halign "end"
     (box
       :width 80
-      (w_wifi :class "element")
+      (w_wifi)
     )
     (box
       :width 100
-      (w_sound :class "element")
+      (w_sound :class "sound")
       )
     (box
       :width 40

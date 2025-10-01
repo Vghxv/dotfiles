@@ -55,16 +55,17 @@ $inactive-color: #bdb38a;
 .systray {
   @extend %element-base;
   background-color: $inactive-color;
-  padding: 5px;
+  padding: 0px 5px 0px 5px;
   
   // &:hover {
   //   background-color: lighten($ws-button-bg-inactive-color, 20%); 
   // }
 }
-.sound-low {
+.sound {
   @extend %element-base;
-  background-color: #CD7F32;
+  background-color: $inactive-color;
   color: #ffffff;
+  padding: 0px 5px 0px 5px;
 }
 
 .brt-low {
@@ -100,10 +101,12 @@ $inactive-color: #bdb38a;
   @extend %element-base;
   background-color: #66FF66;
   color: #000000;
+  padding: 0px 5px 0px 0px;
 }
 
 .wifi-disconnected {
   @extend %element-base;
   background-color: #FF6666;
   color: #ffffff;
+  padding: 0px 5px 0px 0px;
 }
