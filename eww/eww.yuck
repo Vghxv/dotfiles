@@ -145,7 +145,7 @@
       (scale
         :min 0
         :max 101
-        :onchange "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ {}%"
+        :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%"
         :value {volume == "Muted" || volume == "" ? 0 : volume}
         ; :draw-value true
         ; :value-pos "left"
