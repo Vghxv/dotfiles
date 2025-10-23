@@ -1,19 +1,14 @@
+$inactive-color: #bdb38a;
 .bar {
   margin : 5px;
-  background-color: rgba(0,0,0,0);
+  background-color: transparent;
 }
 
-// .window_title{
-  // color: white;
-// }
-// .normal_lb{
-//   color: black;
-// }
+.power_menu {
+  background-color: transparent;
+}
 
-
-$inactive-color: #bdb38a;
 .btn-ws {
-  border-radius: 0px;
 
   .active {
     @extend %element-base;
@@ -111,19 +106,13 @@ $inactive-color: #bdb38a;
   padding: 0px 5px 0px 0px;
 }
 
-.power-menu {
-  background-color: $inactive-color;
-  border-radius: 5px;
-  padding: 0px;
-}
-
 .menu-item {
+  @extend %element-base;
   padding: 10px 20px;
   color: #000000;
-  background-color: transparent;
+  background-color: $inactive-color;
   border: none;
-  border-radius: 0px;
-  
+
   &:hover {
     background-color: lighten($inactive-color, 10%);
   }
@@ -138,12 +127,12 @@ $inactive-color: #bdb38a;
 }
 
 .menu-button {
+  @extend %element-base;
   padding: 0px;
   min-width: 40px;
   min-height: 40px;
   border: none;
   background-color: $inactive-color;
-  border-radius: 5px;
   
   &:hover {
     background-color: lighten($inactive-color, 10%);
