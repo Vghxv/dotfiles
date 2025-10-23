@@ -197,8 +197,8 @@
   :monitor "[1,0]"
   :geometry
   (geometry
-    :x "15px"
-    :y "45px"
+    :x "0px"
+    :y "0px"
     :width "150px"
     :height "100px"
     :anchor "top left"
