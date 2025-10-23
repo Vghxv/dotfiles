@@ -120,6 +120,10 @@ $inactive-color: #bdb38a;
   &.suspend:hover {
     background-color: lighten($inactive-color, 15%);
   }
+
+  &.reboot:hover {
+    background-color: lighten($inactive-color, 15%);
+  }
   
   &.shutdown:hover {
     background-color: #CD7F32;
