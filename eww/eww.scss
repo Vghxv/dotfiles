@@ -110,3 +110,42 @@ $inactive-color: #bdb38a;
   color: #ffffff;
   padding: 0px 5px 0px 0px;
 }
+
+.power-menu {
+  background-color: $inactive-color;
+  border-radius: 5px;
+  padding: 0px;
+}
+
+.menu-item {
+  padding: 10px 20px;
+  color: #000000;
+  background-color: transparent;
+  border: none;
+  border-radius: 0px;
+  
+  &:hover {
+    background-color: lighten($inactive-color, 10%);
+  }
+  
+  &.suspend:hover {
+    background-color: lighten($inactive-color, 15%);
+  }
+  
+  &.shutdown:hover {
+    background-color: #CD7F32;
+  }
+}
+
+.menu-button {
+  padding: 0px;
+  min-width: 40px;
+  min-height: 40px;
+  border: none;
+  background-color: $inactive-color;
+  border-radius: 5px;
+  
+  &:hover {
+    background-color: lighten($inactive-color, 10%);
+  }
+}

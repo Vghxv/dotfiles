@@ -27,4 +27,23 @@
     )
   )
 
+(defwidget power_menu []
+  (box
+    :class "power-menu"
+    :orientation "v"
+    :space-evenly false
+    :spacing 5
+    (button
+      :class "menu-item suspend"
+      :onclick "systemctl suspend"
+      "Suspend"
+      )
+    (button
+      :class "menu-item shutdown"
+      :onclick "shutdown now"
+      "Shutdown"
+      )
+    )
+  )
+
 

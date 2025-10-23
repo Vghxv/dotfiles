@@ -157,10 +157,10 @@
 (defwidget cBoxStart []
   (box :space-evenly false
        :spacing 10
-    (box 
-      :width 40
-      :class "element"
-      (bimage :filename "apple.png")
+    (button
+      :class "element menu-button"
+      :onclick "eww open --toggle power_menu"
+      (bimage :filename "menu-burger.png")
       )
     (box
       :width 80
@@ -235,7 +235,6 @@
     :y "0px"
     :width "100%"
     :height "3%"
-    ; :anchor "bottom center"
     :anchor "top center"
     )
   :stacking "fg"
@@ -245,5 +244,31 @@
     (cBoxStart)
     (cBoxMiddle)
     (cBoxEnd)
+    )
+  )
+
+(defwindow power_menu
+  :monitor "[1,0]"
+  :geometry
+  (geometry
+    :x "15px"
+    :y "45px"
+    :width "150px"
+    :height "100px"
+    :anchor "top left"
+    )
+  :stacking "fg"
+  :windowtype "dialog"
+  :wm-ignore false
+  :focusable false
+  (power_menu_layout)
+  )
+
+(defwidget power_menu_layout []
+  (box
+    :class "power-menu-container"
+    :orientation "v"
+    :space-evenly false
+    (power_menu)
     )
   )
