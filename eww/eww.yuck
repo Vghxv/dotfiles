@@ -105,7 +105,7 @@
        :spacing 10
     (button
       :class "element menu-button"
-      :onclick "eww open --toggle power_menu"
+      :onclick "${EWW} open --toggle power_menu"
       (bimage :filename "menu-burger.png")
       )
     (box

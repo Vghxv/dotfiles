@@ -5,6 +5,8 @@
 
 (defvar ASSET_PATH "/home/vin/.config/eww/assets")
 
+(defvar EWW "/home/vin/ewwd/target/release/eww")
+
 (defvar HOME "/home/vin")
 
 (defvar toggle_sound false)
