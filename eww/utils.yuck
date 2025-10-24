@@ -41,7 +41,7 @@
     (button
       :class "menu-item reboot"
       :onclick "reboot"
-      "reboot"
+      "Reboot"
     )
     (button
       :class "menu-item shutdown"

@@ -1,4 +1,5 @@
-$inactive-color: #bdb38a;
+$inactive-color: #AAAAAA;
+$global-padding: 0px 10px 0px 10px;
 .bar {
   margin : 5px;
   background-color: transparent;
@@ -29,44 +30,26 @@ $inactive-color: #bdb38a;
 }
 
 
-
-// margin: 2px;
-// padding: 0px 30px 0px 0px;
-
-// Define a placeholder with all shared styles
 %element-base {
   border-radius: 5px;
 }
 
-// Apply it to .element
 .element {
   @extend %element-base;
   background-color: $inactive-color;
-  // &:hover {
-  //   background-color: lighten($ws-button-bg-inactive-color, 20%); 
-  // }
 }
 
 .systray {
   @extend %element-base;
   background-color: $inactive-color;
-  padding: 0px 5px 0px 5px;
-  
-  // &:hover {
-  //   background-color: lighten($ws-button-bg-inactive-color, 20%); 
-  // }
+  padding: $global-padding;
 }
+
 .sound {
   @extend %element-base;
   background-color: $inactive-color;
   color: #ffffff;
-  padding: 0px 5px 0px 5px;
-}
-
-.brt-low {
-  @extend %element-base;
-  background-color: #CD7F32;
-  color: #000000;
+  padding: $global-padding;
 }
 
 .bat-low {
@@ -86,24 +69,18 @@ $inactive-color: #bdb38a;
   color: #000000;
 }
 
-.brt-high {
-  @extend %element-base;
-  background-color: #FFCC66;
-  color: #000000;
-}
-
 .wifi-connected {
   @extend %element-base;
   background-color: #66FF66;
   color: #000000;
-  padding: 0px 5px 0px 0px;
+  padding: $global-padding;
 }
 
 .wifi-disconnected {
   @extend %element-base;
   background-color: #FF6666;
   color: #ffffff;
-  padding: 0px 5px 0px 0px;
+  padding: $global-padding;
 }
 
 .menu-item {
@@ -126,7 +103,7 @@ $inactive-color: #bdb38a;
   }
   
   &.shutdown:hover {
-    background-color: #CD7F32;
+    background-color: lighten($inactive-color, 35%);
   }
 }
 
