@@ -1,0 +1,111 @@
+// * {
+//     background: #1e1e2e;
+//     background-alt: #313244;
+//     foreground: #cdd6f4;
+//     selected: #89b4fa;
+//     accent: #f5c2e7;
+//     border-color: #89b4fa;
+//     border-radius: 10px;
+//     spacing: 6px;
+// }
+//
+// window {
+//     width: 30%;
+//     border: 2px;
+//     border-color: @border-color;
+//     background-color: @background;
+//     border-radius: 16px;
+// }
+//
+// mainbox {
+//     spacing: 10px;
+//     children: [inputbar, listview];
+// }
+//
+// inputbar {
+//     background-color: @background-alt;
+//     text-color: @foreground;
+//     padding: 6px;
+//     border-radius: 6px;
+// }
+//
+// listview {
+//     background-color: transparent;
+//     fixed-height: 0;
+//     lines: 8;
+// }
+//
+// element {
+//     padding: 4px 8px;
+//     border-radius: 6px;
+// }
+//
+// element selected {
+//     background-color: @selected;
+//     text-color: @background;
+// }
+
+* {
+    background:        #0f111a;
+    background-alt:    #1a1c25;
+    foreground:        #cfd3da;
+    selected:          #1793d1;   /* Arch blue */
+    accent:            #1793d1;
+    border-color:      #1793d1;
+    border-radius:     10px;
+    spacing:           6px;
+    font:              "JetBrainsMono Nerd Font 12";
+}
+
+window {
+    width: 32%;
+    border: 2px;
+    border-color: @border-color;
+    background-color: @background;
+    border-radius: 14px;
+}
+
+mainbox {
+    spacing: 12px;
+    children: [inputbar, listview];
+}
+
+inputbar {
+    background-color: @background-alt;
+    text-color: @foreground;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+entry {
+    placeholder: "Search or run...";
+    text-color: @foreground;
+}
+
+listview {
+    background-color: transparent;
+    fixed-height: 0;
+    lines: 8;
+    spacing: 5px;
+}
+
+element {
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-color: @foreground;
+}
+
+element selected {
+    background-color: @selected;
+    text-color: #ffffff;
+}
+
+element-icon {
+    size: 1.2em;
+}
+
+scrollbar {
+    handle-color: @accent;
+    handle-width: 4px;
+}
+
