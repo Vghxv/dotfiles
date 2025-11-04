@@ -52,6 +52,13 @@ $global-padding: 0px 10px 0px 10px;
   padding: $global-padding;
 }
 
+.camera_on {
+  @extend %element-base;
+  background-color: #66FF66;
+  color: #000000;
+  padding: $global-padding;
+}
+
 .bat-low {
   @extend %element-base;
   background-color: #FF6666;

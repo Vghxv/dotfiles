@@ -35,7 +35,7 @@
     :value_on "On"
     :text_on "📸"
     :text_off "📷" 
-    :color_on "brt-high" 
+    :color_on "camera_on" 
     :color_off "element" 
     :cmd ".config/scripts/toggle-webcam.sh"
     )
