@@ -70,5 +70,3 @@ hypr/*.bak-*
 hypr/voyager/.hyprpaper-was-enabled
 hypr/voyager/wallpaper.*
 voyager/
-dunst/
-eww/
