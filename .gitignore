@@ -1,72 +1,69 @@
 # ── Editors & IDEs ──────────────────────────
-Code/
-Cursor/
-cursor/
-JetBrains/
-github-copilot/
-treesitter.lua
+/Code/
+/JetBrains/
+/github-copilot/
+/treesitter.lua
 
 # ── Dev tooling ─────────────────────────────
-.mono/
-dlv/
-gh/
-go/
-gopls/
-nvm/
+/.mono/
+/dlv/
+/gh/
+/go/
+/gopls/
+/nvm/
 
 # ── Browsers & apps ─────────────────────────
-BraveSoftware/
-chromium/
-discord/
-KeePass/
-qBittorrent/
-rclone/
-htop/
+/BraveSoftware/
+/chromium/
+/discord/
+/KeePass/
+/qBittorrent/
+/rclone/
+/htop/
 
 # ── KDE / Qt ────────────────────────────────
-kde.org/
-QtProject.conf
-baloofileinformationrc
-dolphinrc
-filetypesrc
-kdeglobals
-kiorc
-kservicemenurc
-ktrashrc
-kwalletmanagerrc
-kwalletrc
-trashrc
+/kde.org/
+/QtProject.conf
+/baloofileinformationrc
+/dolphinrc
+/filetypesrc
+/kdeglobals
+/kiorc
+/kservicemenurc
+/ktrashrc
+/kwalletmanagerrc
+/kwalletrc
+/trashrc
 
 # ── GTK / XFCE ──────────────────────────────
-gtk-3.0/
-Thunar/
-xfce4/
+/gtk-3.0/
+/Thunar/
+/xfce4/
 
 # ── Input methods ───────────────────────────
-fcitx/
-fcitx5/
-ibus/
+/fcitx/
+/fcitx5/
+/ibus/
 
 # ── Audio ───────────────────────────────────
-pavucontrol.ini
-pulse/
-wireplumber.bak/
+/pavucontrol.ini
+/pulse/
+/wireplumber.bak/
 
 # ── System, session & XDG ───────────────────
-autostart/
-dconf/
-session/
-systemd/
-mimeapps.list
-user-dirs.dirs
-user-dirs.locale
-settings
-tool_state
+/autostart/
+/dconf/
+/session/
+/systemd/
+/mimeapps.list
+/user-dirs.dirs
+/user-dirs.locale
+/settings
+/tool_state
 
-# ── Desktop (eww / waybar / hypr) ───────────
-eww/assets/menu-burger.png
-waybar/
-hypr/*.bak-*
-hypr/voyager/.hyprpaper-was-enabled
+# ── Desktop (dunst / eww / waybar / hypr) ─
+/dunst/
+/eww/
+/waybar/
 hypr/voyager/wallpaper.*
-voyager/
+/voyager/
