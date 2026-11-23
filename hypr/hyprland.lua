@@ -13,8 +13,8 @@ local terminal      = "kitty"
 local fileManager   = "thunar"
 local menu          = "rofi -show drun"
 local browser       = "brave --password-store=basic"
-local ocr           = home .. "/.config/scripts/ocr.sh"
-local camera_toggle = home .. "/.config/scripts/toggle-webcam.sh"
+local ocr           = home .. "/.config/scripts/ocr"
+local camera_toggle = home .. "/.config/scripts/toggle-webcam"
 local touch_pad     = "elan1200:00-04f3:309f-touchpad"
 
 -------------------
@@ -24,7 +24,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"') -- GTK4
     hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"')       -- GTK3
-    hl.exec_cmd("uwsm app -- " .. eww .. " open bar")
+    hl.exec_cmd("uwsm app -- env EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/bars.sh watch")
     hl.exec_cmd(camera_toggle)
     hl.exec_cmd("fcitx5 -d")
     hl.exec_cmd("hyprctl setcursor rose-pine-hyprcursor 24")
@@ -135,8 +135,9 @@ hl.bind(key("S"), hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(key("L"), hl.dsp.exec_cmd("hyprlock"))
 hl.bind(key("F"), hl.dsp.exec_cmd("rofimoji --selector rofi --action copy"))
 hl.bind(key("W"), hl.dsp.exec_cmd(ocr))
-hl.bind(key("G"), hl.dsp.exec_cmd(eww .. " open bar --toggle"))
+hl.bind(key("G"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/bars.sh toggle"))
 hl.bind(key("H"), hl.dsp.exec_cmd(eww .. " open power_menu --toggle"))
+hl.bind(key("T"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/scripts/voyager-theme toggle")) -- bar + dunst light/dark
 
 -- Move focus with mainMod + arrow keys
 hl.bind(key("left"),  hl.dsp.focus({ direction = "left" }))
@@ -174,7 +175,7 @@ hl.bind("SHIFT + XF86AudioMute",        hl.dsp.exec_cmd("wpctl set-mute @DEFAULT
 hl.bind("XF86MonBrightnessUp",          hl.dsp.exec_cmd("brightnessctl -e2 -n2 set 5%+"),                    le)
 hl.bind("XF86MonBrightnessDown",        hl.dsp.exec_cmd("brightnessctl -e2 -n2 set 5%-"),                    le)
 hl.bind("XF86WebCam",                   hl.dsp.exec_cmd(camera_toggle),                                      le)
-hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd(home .. "/.config/hypr/scripts/touchpad.sh " .. touch_pad))
+hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd(home .. "/.config/scripts/touchpad " .. touch_pad))
 
 -- Requires playerctl
 local l = { locked = true }

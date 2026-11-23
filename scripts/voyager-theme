@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# Switch the voyager bar (eww) and notifications (dunst) between light and dark.
+#
+#   voyager-theme            print the current mode
+#   voyager-theme toggle     flip it (bind this to a key)
+#   voyager-theme light|dark set it
+#
+# Installed to ~/.config/scripts/voyager-theme by eww/install.sh and dunst/install.sh.
+# The mode is saved in ~/.config/voyager/theme. Components that are not installed
+# are skipped. Set EWW=/path/to/eww to use another eww binary.
+
+set -euo pipefail
+
+EWW=${EWW:-eww}
+STATE="$HOME/.config/voyager/theme"
+EWW_DIR="$HOME/.config/eww"
+DUNST_DIR="$HOME/.config/dunst"
+
+current() { local m; m=$(cat "$STATE" 2>/dev/null || true); [[ $m == dark ]] && echo dark || echo light; }
+
+case "${1:-}" in
+  "")         current; exit ;;
+  toggle)     [[ $(current) == dark ]] && mode=light || mode=dark ;;
+  light|dark) mode=$1 ;;
+  apply)      mode=$(current) ;;   # re-apply the saved mode (used by the installers)
+  *) echo "usage: voyager-theme [toggle|light|dark]" >&2; exit 1 ;;
+esac
+
+mkdir -p "${STATE%/*}"
+echo "$mode" > "$STATE"
+
+# eww: just a variable. eww.scss holds both modes, scoped under .light / .dark, the
+# class of every window's root box; the icon set follows it too. Nothing in
+# ~/.config/eww is written, so eww's file watcher never triggers a full reload.
+# A daemon that is not running reads the saved mode when it starts.
+if [[ -d "$EWW_DIR/assets/$mode" ]] && "$EWW" ping >/dev/null 2>&1; then
+  "$EWW" update theme="$mode"
+fi
+
+# dunst: the mode's colors are a drop-in read after dunstrc
+if [[ -f "$DUNST_DIR/themes/$mode.conf" ]]; then
+  install -D -m 644 "$DUNST_DIR/themes/$mode.conf" "$DUNST_DIR/dunstrc.d/90-voyager-theme.conf"
+  pgrep -x dunst >/dev/null && dunstctl reload >/dev/null 2>&1 || true
+fi
+
+[[ ${1:-} == apply ]] || notify-send -u low -t 2000 voyager "$mode mode" 2>/dev/null || true
