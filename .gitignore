@@ -48,7 +48,6 @@
 # ── Audio ───────────────────────────────────
 /pavucontrol.ini
 /pulse/
-/wireplumber.bak/
 
 # ── System, session & XDG ───────────────────
 /autostart/
@@ -67,3 +66,7 @@
 /waybar/
 hypr/voyager/wallpaper.*
 /voyager/
+
+# ── Backups ─────────────────────────────────
+*.bak
+*.bak/
