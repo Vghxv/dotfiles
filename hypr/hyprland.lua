@@ -8,6 +8,7 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@60", position = "auto", scal
 ---- MY PROGRAMS ----
 ---------------------
 local home          = os.getenv("HOME")
+local cursor_size   = os.getenv("XCURSOR_SIZE")
 local eww           = home .. "/ewwd/target/release/eww"
 local terminal      = "kitty"
 local fileManager   = "thunar"
@@ -24,10 +25,11 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"') -- GTK4
     hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"')       -- GTK3
+    hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "BreezeX-RosePine-Linux"')
+    hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-size ' .. cursor_size)
     hl.exec_cmd("uwsm app -- env EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/bars.sh watch")
     hl.exec_cmd(camera_toggle)
     hl.exec_cmd("fcitx5 -d")
-    hl.exec_cmd("hyprctl setcursor rose-pine-hyprcursor 24")
 end)
 
 -----------------------

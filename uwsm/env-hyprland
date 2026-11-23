@@ -1,5 +1,5 @@
 # ~/.config/uwsm/env-hyprland
 
 export HYPRCURSOR_THEME=rose-pine-hyprcursor
-export HYPRCURSOR_SIZE=36
+export HYPRCURSOR_SIZE=$XCURSOR_SIZE  # set in uwsm/env
 export HYPRSHOT_DIR=$HOME/Pictures/Screenshots
