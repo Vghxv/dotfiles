@@ -9,7 +9,7 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@60", position = "auto", scal
 ---------------------
 local home          = os.getenv("HOME")
 local cursor_size   = os.getenv("XCURSOR_SIZE")
-local eww           = home .. "/ewwd/target/release/eww"
+local eww           = home .. "/repo/eww/target/release/eww"
 local terminal      = "kitty"
 local fileManager   = "thunar"
 local menu          = "rofi -show drun"
@@ -138,7 +138,7 @@ hl.bind(key("L"), hl.dsp.exec_cmd("hyprlock"))
 hl.bind(key("F"), hl.dsp.exec_cmd("rofimoji --selector rofi --action copy"))
 hl.bind(key("W"), hl.dsp.exec_cmd(ocr))
 hl.bind(key("G"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/bars.sh toggle"))
-hl.bind(key("H"), hl.dsp.exec_cmd(eww .. " open power_menu --toggle"))
+hl.bind(key("H"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/popup.sh power_menu"))
 hl.bind(key("T"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/scripts/voyager-theme toggle")) -- bar + dunst light/dark
 
 -- Move focus with mainMod + arrow keys
