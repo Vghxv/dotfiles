@@ -141,7 +141,6 @@ hl.bind(key("W"), hl.dsp.exec_cmd(scripts .. "/ocr"))
 hl.bind(key("G"), hl.dsp.exec_cmd(eww_scripts .. "/bars.sh toggle"))
 hl.bind(key("H"), hl.dsp.exec_cmd(eww_scripts .. "/popup.sh power_menu"))
 hl.bind(key("T"), hl.dsp.exec_cmd(scripts .. "/voyager-theme toggle")) -- bar + dunst light/dark
-hl.bind(key("D"), hl.dsp.exec_cmd(scripts .. "/voyager-sky toggle"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(key("left"), hl.dsp.focus({ direction = "left" }))
