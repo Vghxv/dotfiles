@@ -9,13 +9,12 @@ hl.monitor({ output = "HDMI-A-1", mode = "1920x1080@60", position = "auto", scal
 ---------------------
 local home = os.getenv("HOME")
 local cursor_size = os.getenv("XCURSOR_SIZE")
-local eww = home .. "/repo/eww/target/release/eww"
+local scripts = home .. "/.config/scripts"
+local eww_scripts = home .. "/.config/eww/scripts"
 local terminal = "kitty"
 local fileManager = "thunar"
 local menu = "rofi -show drun"
 local browser = "brave --password-store=basic"
-local ocr = home .. "/.config/scripts/ocr"
-local camera_toggle = home .. "/.config/scripts/toggle-webcam"
 local touch_pad = "elan1200:00-04f3:309f-touchpad"
 
 -------------------
@@ -27,8 +26,8 @@ hl.on("hyprland.start", function()
     hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"') -- GTK3
     hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "BreezeX-RosePine-Linux"')
     hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-size ' .. cursor_size)
-    hl.exec_cmd("uwsm app -- env EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/bars.sh watch")
-    hl.exec_cmd(camera_toggle)
+    hl.exec_cmd("uwsm app -- " .. eww_scripts .. "/bars.sh watch")
+    hl.exec_cmd(scripts .. "/toggle-webcam")
     hl.exec_cmd("fcitx5 -d")
 end)
 
@@ -138,10 +137,11 @@ hl.bind(key("B"), hl.dsp.exec_cmd(browser))
 hl.bind(key("S"), hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(key("L"), hl.dsp.exec_cmd("hyprlock"))
 hl.bind(key("F"), hl.dsp.exec_cmd("rofimoji --selector rofi --action copy"))
-hl.bind(key("W"), hl.dsp.exec_cmd(ocr))
-hl.bind(key("G"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/bars.sh toggle"))
-hl.bind(key("H"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/eww/scripts/popup.sh power_menu"))
-hl.bind(key("T"), hl.dsp.exec_cmd("EWW=" .. eww .. " " .. home .. "/.config/scripts/voyager-theme toggle")) -- bar + dunst light/dark
+hl.bind(key("W"), hl.dsp.exec_cmd(scripts .. "/ocr"))
+hl.bind(key("G"), hl.dsp.exec_cmd(eww_scripts .. "/bars.sh toggle"))
+hl.bind(key("H"), hl.dsp.exec_cmd(eww_scripts .. "/popup.sh power_menu"))
+hl.bind(key("T"), hl.dsp.exec_cmd(scripts .. "/voyager-theme toggle")) -- bar + dunst light/dark
+hl.bind(key("D"), hl.dsp.exec_cmd(scripts .. "/voyager-sky toggle"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(key("left"), hl.dsp.focus({ direction = "left" }))
@@ -178,8 +178,8 @@ hl.bind("SHIFT + XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAU
 hl.bind("SHIFT + XF86AudioMute", hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), le)
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e2 -n2 set 5%+"), le)
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e2 -n2 set 5%-"), le)
-hl.bind("XF86WebCam", hl.dsp.exec_cmd(camera_toggle), le)
-hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd(home .. "/.config/scripts/touchpad " .. touch_pad))
+hl.bind("XF86WebCam", hl.dsp.exec_cmd(scripts .. "/toggle-webcam"), le)
+hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd(scripts .. "/touchpad " .. touch_pad))
 
 -- Requires playerctl
 local l = { locked = true }
