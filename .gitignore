@@ -64,7 +64,8 @@
 /dunst/
 /eww/
 /waybar/
-hypr/voyager/wallpaper.*
+/hypr/voyager/
+/hypr/hyprlock.conf
 /voyager/
 
 # ── Backups ─────────────────────────────────
