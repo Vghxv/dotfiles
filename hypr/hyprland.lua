@@ -23,9 +23,9 @@ local touch_pad = "elan1200:00-04f3:309f-touchpad"
 hl.on("hyprland.start", function()
     hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
     hl.exec_cmd('gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"') -- GTK4
-    hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"') -- GTK3
+    hl.exec_cmd('gsettings set org.gnome.desktop.interface gtk-theme "adw-gtk3"')
     hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-theme "BreezeX-RosePine-Linux"')
-    hl.exec_cmd('gsettings set org.gnome.desktop.interface cursor-size ' .. cursor_size)
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size " .. cursor_size)
     hl.exec_cmd("uwsm app -- " .. eww_scripts .. "/bars.sh watch")
     hl.exec_cmd(scripts .. "/toggle-webcam")
     hl.exec_cmd("fcitx5 -d")
