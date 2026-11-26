@@ -28,6 +28,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size " .. cursor_size)
     hl.exec_cmd("uwsm app -- " .. eww_scripts .. "/bars.sh watch")
     hl.exec_cmd(scripts .. "/toggle-webcam")
+    hl.exec_cmd(scripts .. "/voyager-sky listen")
     hl.exec_cmd("fcitx5 -d")
 end)
 
@@ -132,7 +133,7 @@ hl.bind(key("M"), hl.dsp.exit())
 hl.bind(key("E"), hl.dsp.exec_cmd(fileManager))
 hl.bind(key("V"), hl.dsp.window.float({ action = "toggle" }))
 hl.bind(key("R"), hl.dsp.exec_cmd(menu))
-hl.bind(key("P"), hl.dsp.window.pseudo()) -- dwindle
+hl.bind(key("P"), hl.dsp.window.pseudo())
 hl.bind(key("B"), hl.dsp.exec_cmd(browser))
 hl.bind(key("S"), hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind(key("L"), hl.dsp.exec_cmd("hyprlock"))
@@ -140,7 +141,7 @@ hl.bind(key("F"), hl.dsp.exec_cmd("rofimoji --selector rofi --action copy"))
 hl.bind(key("W"), hl.dsp.exec_cmd(scripts .. "/ocr"))
 hl.bind(key("G"), hl.dsp.exec_cmd(eww_scripts .. "/bars.sh toggle"))
 hl.bind(key("H"), hl.dsp.exec_cmd(eww_scripts .. "/popup.sh power_menu"))
-hl.bind(key("T"), hl.dsp.exec_cmd(scripts .. "/voyager-theme toggle")) -- bar + dunst light/dark
+hl.bind(key("T"), hl.dsp.exec_cmd(scripts .. "/voyager-theme toggle"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(key("left"), hl.dsp.focus({ direction = "left" }))
